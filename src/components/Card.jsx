@@ -5,7 +5,7 @@ export default function Card({ date, title, subtitle, bullets }) {
             <span className="font-bold text-lg">{title}</span>
             <span className="text-right text-text-secondary font-light">{subtitle}</span>
             <ul className="col-span-2 list-disc list-inside text-text-secondary">
-                {bullets.map((bullet, index) => <li key={index}>{bullet}</li>)}
+                {bullets.map((bullet, index) => <li className="list-item" key={index}>{bullet}</li>)}
             </ul>
         </article>
     )
