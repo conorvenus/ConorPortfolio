@@ -4,6 +4,7 @@ import Modal from "./components/Modal"
 import Navbar from "./components/Navbar"
 import HeroSection from "./components/sections/HeroSection"
 import EducationSection from "./components/sections/EducationSection"
+import { motion } from "framer-motion"
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)

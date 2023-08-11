@@ -1,8 +1,13 @@
 import { ChatBubbleBottomCenterTextIcon, HomeIcon, NewspaperIcon } from "@heroicons/react/24/outline"
+import { motion } from "framer-motion"
 
 export default function Navbar({ toggleModal }) {
     return (
-        <header className="flex justify-between items-center">
+        <motion.header 
+        initial={{ opacity: 0, y: -150 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.25, ease: "easeInOut" }}
+        className="flex justify-between items-center">
             <div className="text-3xl font-bold">Conor Venus</div>
             <div onClick={toggleModal} className="cursor-pointer flex items-center gap-8 py-3 px-4 border-text-secondary text-text-secondary border w-fit rounded-md">
                 <div className="flex items-center gap-2">
@@ -23,6 +28,6 @@ export default function Navbar({ toggleModal }) {
                     </li>
                 </ul>
             </nav>
-      </header>
+      </motion.header>
     )
 }
