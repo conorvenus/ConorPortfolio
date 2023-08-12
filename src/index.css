@@ -34,3 +34,19 @@ ul li {
     content: '';
     @apply -z-10 absolute top-0 left-[50%] w-[50%] bg-[#00F0FF] aspect-square rounded-full blur-[150px] opacity-20;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    @apply bg-text-secondary bg-opacity-20;
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-text bg-opacity-30;
+}

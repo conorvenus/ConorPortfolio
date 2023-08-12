@@ -1,8 +1,22 @@
 import { ChatBubbleBottomCenterTextIcon, PaperAirplaneIcon, UserIcon, FaceSmileIcon } from "@heroicons/react/24/outline"
 import { AnimatePresence, motion } from "framer-motion"
+import { useState } from "react"
 import ChatMessage from "./ChatMessage"
 
 export default function Modal({ visible = false, toggleModal }) {
+    const [messages, setMessages] = useState([])
+    const [input, setInput] = useState('')
+
+    function addMessage(message, isBot = false) {
+        setMessages(currentState => [...currentState, { content: message, id: crypto.randomUUID(), isBot: isBot }])
+    }
+
+    function sendMessage(event) {
+        event.preventDefault()
+        addMessage(input)
+        setInput('')
+    }
+
     return (
         <AnimatePresence>
             {visible && (
@@ -21,17 +35,20 @@ export default function Modal({ visible = false, toggleModal }) {
                         exit={{opacity: 0}}
                         transition={{duration: 0.5, ease: 'easeInOut'}}
                         className="absolute z-20 max-h-[600px] flex flex-col p-4 left-[50%] -translate-x-1/2 mt-16 card max-w-[600px] min-h-[300px] border border-text-secondary rounded-md bg-background bg-opacity-20 backdrop-blur-[25px]">
-                        <main className="flex-1 flex flex-col gap-4 overflow-auto py-4">
-                            <ChatMessage content="Message content goes here..." />
-                            <ChatMessage content="" isBot={true} />
+                        <main className="flex-1 flex flex-col gap-4 overflow-auto my-4 pr-4">
+                            {messages.map(message =>
+                                <ChatMessage key={message.id} content={message.content} isBot={message.isBot} />
+                            )}
                         </main>
-                        <footer className="border border-text-secondary px-2 py-1 rounded-md text-text-secondary flex items-center justify-between">
+                        <form onSubmit={sendMessage} className="border border-text-secondary px-2 py-1 rounded-md text-text-secondary flex items-center justify-between">
                             <div className="flex items-center gap-2 flex-1">
-                            <ChatBubbleBottomCenterTextIcon className="h-4 w-4" />
-                            <input className="flex-1 bg-transparent outline-none placeholder:text-text-secondary" type="text" placeholder="Ask something about me..." />
+                                <ChatBubbleBottomCenterTextIcon className="h-4 w-4" />
+                                <input value={input} onChange={event => setInput(event.target.value)} className="flex-1 bg-transparent outline-none placeholder:text-text-secondary" type="text" placeholder="Ask something about me..." />
                             </div>
-                            <PaperAirplaneIcon className="h-4 w-4" />
-                        </footer>
+                            <button type="submit">
+                                <PaperAirplaneIcon className="h-4 w-4" />
+                            </button>
+                        </form>
                     </motion.div>
                 </>
             )}
