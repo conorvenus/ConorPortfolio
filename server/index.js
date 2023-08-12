@@ -10,7 +10,10 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express()
+
 app.use(express.json())
+
+app.use(express.static(__dirname + "../client/dist"))
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
