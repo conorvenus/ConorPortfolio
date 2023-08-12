@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 export default function HeroSection() {
     return (
-        <section className="py-16 hero flex items-center gap-8">
+        <section className="py-16 hero flex items-center gap-8 md:flex-row flex-col">
             <h1 className="font-bold text-5xl flex-1">A <motion.span
                                                          transition={{ duration: 1, ease: "easeInOut" }}
                                                          initial={{ opacity: 0 }} 
