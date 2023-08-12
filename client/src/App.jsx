@@ -4,6 +4,8 @@ import Modal from "./components/Modal"
 import Navbar from "./components/Navbar"
 import HeroSection from "./components/sections/HeroSection"
 import EducationSection from "./components/sections/EducationSection"
+import ExperienceSection from "./components/sections/ExperienceSection"
+import ProjectsSection from "./components/sections/ProjectsSection"
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -33,6 +35,8 @@ export default function App() {
       <Navbar toggleModal={toggleModal} />
       <HeroSection />
       <EducationSection />
+      <ExperienceSection />
+      <ProjectsSection />
     </>
   )
 }

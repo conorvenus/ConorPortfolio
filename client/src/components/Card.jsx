@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Card({ date, title, subtitle, bullets }) {
   return (
-    <article className="card relative grid grid-cols-2 gap-4 border p-4 rounded-md border-text-secondary">
+    <article className="card min-w-[300px] relative grid grid-cols-2 gap-4 border p-4 rounded-md border-text-secondary">
         <span className="col-span-2 text-[#5BFF9D]">{date}</span>
         <motion.span
           className="font-bold text-lg"
