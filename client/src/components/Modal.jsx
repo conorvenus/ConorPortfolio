@@ -11,10 +11,31 @@ export default function Modal({ visible = false, toggleModal }) {
         setMessages(currentState => [...currentState, { content: message, id: crypto.randomUUID(), isBot: isBot }])
     }
 
-    function sendMessage(event) {
+    async function sendMessage(event) {
+        if (input.trim().length === 0) return
+        
         event.preventDefault()
         addMessage(input)
         setInput('')
+        const response = await fetch('/api/sendMessage',
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    message: input
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+        addMessage('', true)
+        const reader = response.body
+            .pipeThrough(new TextDecoderStream())
+            .getReader()
+        while (true) {
+            const { value, done } = await reader.read()
+            if (done) break
+            setMessages(currentState => [...currentState.slice(0, -1), { content: currentState.at(-1).content + value, id: currentState.at(-1).id, isBot: true }])
+        }
     }
 
     return (

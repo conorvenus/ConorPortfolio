@@ -3,9 +3,9 @@ import BackgroundCircle from "./BackgroundCircle"
 export default function BackgroundCircles() {
     return (
         <>
-            <BackgroundCircle radius="30vw" colour="#00FFA0" top="-15vw" left="-10vw" />
-            <BackgroundCircle radius="30vw" colour="#00F0FF" top="25vw" right="-10vw" />
-            <BackgroundCircle radius="50vw" colour="#23FFD7" top="50vw" left="-20vw" />
+            <BackgroundCircle radius="30vh" top="-10vh" left="-5vh" />
+            <BackgroundCircle radius="40vh" top="15vh" right="-5vh" />
+            <BackgroundCircle radius="50vh" top="50vh" left="-5vh" />
         </>
     )
 }
