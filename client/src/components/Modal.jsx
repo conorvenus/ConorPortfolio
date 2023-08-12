@@ -8,7 +8,7 @@ export default function Modal({ visible = false, toggleModal }) {
     const [input, setInput] = useState('')
 
     function addMessage(message, isBot = false) {
-        setMessages(currentState => [...currentState, { content: message, id: crypto.randomUUID(), isBot: isBot }])
+        setMessages(currentState => [...currentState, { content: message, isBot: isBot }])
     }
 
     async function sendMessage(event) {
@@ -57,8 +57,8 @@ export default function Modal({ visible = false, toggleModal }) {
                         transition={{duration: 0.5, ease: 'easeInOut'}}
                         className="fixed z-20 max-h-[600px] flex flex-col p-4 mt-16 card max-w-[600px] min-h-[300px] border border-text-secondary rounded-md bg-background bg-opacity-20 backdrop-blur-[25px]">
                         <main className="flex-1 flex flex-col gap-4 overflow-auto my-4 pr-4">
-                            {messages.map(message =>
-                                <ChatMessage key={message.id} content={message.content} isBot={message.isBot} />
+                            {messages.map((message, idx) =>
+                                <ChatMessage key={idx} content={message.content} isBot={message.isBot} />
                             )}
                         </main>
                         <form onSubmit={sendMessage} className="border border-text-secondary px-2 py-1 rounded-md text-text-secondary flex items-center justify-between">
