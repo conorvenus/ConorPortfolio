@@ -1,5 +1,6 @@
 const express = require("express")
 const dotenv = require("dotenv")
+const path = require("path")
 const { Configuration, OpenAIApi } = require("openai")
 
 dotenv.config()
@@ -13,7 +14,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use(express.static(__dirname + "../client/dist"))
+app.use(express.static(path.join(__dirname, "../client/dist")))
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
