@@ -1,4 +1,4 @@
-import squiggle from "../../squiggle.svg"
+import myself from "../../myself.png"
 import { motion } from "framer-motion"
 
 export default function HeroSection() {
@@ -10,7 +10,7 @@ export default function HeroSection() {
                                                          animate={{ opacity: 1 }}>Software Developer </motion.span>
                                                        From The United Kingdom.</h1>
             <div className="flex-1">
-                <img className="max-h-80 ml-auto" src={squiggle}></img>
+                <img className="max-h-96 ml-auto object-contain aspect-square rounded-full" src={myself}></img>
             </div>
          </section>
     )
