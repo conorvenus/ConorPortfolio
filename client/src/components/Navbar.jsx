@@ -4,9 +4,9 @@ import { motion } from "framer-motion"
 export default function Navbar({ toggleModal }) {
     return (
         <motion.header 
-        initial={{ opacity: 0, y: -150 }}
+        initial={{ opacity: 0, y: -75 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.25, ease: "easeInOut" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         className="flex justify-between items-center">
             <div className="text-3xl font-bold md:block hidden">Conor Venus</div>
             <div onClick={toggleModal} className="cursor-pointer flex items-center gap-8 py-3 px-4 border-text-secondary text-text-secondary border w-fit md:rounded-md rounded-full md:aspect-auto aspect-square">
