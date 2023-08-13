@@ -10,7 +10,7 @@ export default function BackgroundCircle({ radius, top, left, right, bottom }) {
 
     return (
         <motion.div 
-        className="-z-10 rounded-full blur-[150px] opacity-20 absolute" 
+        className="-z-10 rounded-full blur-[50px] opacity-20 absolute" 
         style={{
             width: radius,
             height: radius,
