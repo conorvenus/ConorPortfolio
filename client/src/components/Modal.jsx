@@ -7,14 +7,6 @@ export default function Modal({ visible = false, toggleModal }) {
     const [messages, setMessages] = useState([])
     const [input, setInput] = useState('')
 
-    // add long fake messages to see what happens when overflow
-    useEffect(() => {
-        for (let i = 0; i < 10; i++) {
-            addMessage('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, quis aliquam nisl nunc vitae')
-        }
-    }, [])
-
-
     function addMessage(message, isBot = false) {
         setMessages(currentState => [...currentState, { content: message, isBot: isBot }])
     }
