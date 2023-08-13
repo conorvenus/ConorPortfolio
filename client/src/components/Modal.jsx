@@ -41,21 +41,21 @@ export default function Modal({ visible = false, toggleModal }) {
     return (
         <AnimatePresence>
             {visible && (
-                <div className="grid place-items-center h-screen w-screen top-0 left-0 absolute">
+                <motion.div 
+                    onClick={toggleModal} 
+                    className="fixed grid place-items-center h-screen w-screen top-0 left-0 bg-background bg-opacity-20 z-10 backdrop-blur-md"
+                    initial={{ backdropFilter: 'blur(0px)', opacity: 0 }}
+                    animate={{ backdropFilter: 'blur(12px)', opacity: 1 }}
+                    exit={{ backdropFilter: 'blur(0px)', opacity: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                >
                     <motion.div
-                        initial={{ backdropFilter: 'blur(0px)', opacity: 0 }}
-                        animate={{ backdropFilter: 'blur(12px)', opacity: 1 }}
-                        exit={{ backdropFilter: 'blur(0px)', opacity: 0 }}
-                        transition={{ duration: 0.5, ease: 'easeInOut' }}
-                        onClick={toggleModal} className="w-screen h-screen backdrop-blur-md bg-background bg-opacity-20 z-10 fixed top-0 left-0">
-                    </motion.div>
-                    
-                    <motion.div 
+                        onClick={event => event.stopPropagation()} 
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}
                         transition={{duration: 0.5, ease: 'easeInOut'}}
-                        className="fixed z-20 max-h-[600px] flex flex-col p-4 mt-16 card max-w-[600px] min-h-[300px] border border-text-secondary rounded-md bg-background bg-opacity-20 backdrop-blur-[25px]">
+                        className="max-h-[600px] flex flex-col p-4 mt-16 card max-w-[600px] min-h-[300px] border border-text-secondary rounded-md bg-background bg-opacity-20 backdrop-blur-[25px]">
                         <main className="flex-1 flex flex-col gap-4 overflow-auto my-4 pr-4">
                             {messages.map((message, idx) =>
                                 <ChatMessage key={idx} content={message.content} isBot={message.isBot} />
@@ -71,7 +71,7 @@ export default function Modal({ visible = false, toggleModal }) {
                             </button>
                         </form>
                     </motion.div>
-                </div>
+                </motion.div>
             )}
         </AnimatePresence>
     )
