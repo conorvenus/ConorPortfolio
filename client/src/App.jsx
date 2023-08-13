@@ -32,11 +32,14 @@ export default function App() {
       <Modal visible={isModalOpen} toggleModal={toggleModal}  />
 
       {/* Primary Content */}
-      <Navbar toggleModal={toggleModal} />
-      <HeroSection />
-      <EducationSection />
-      <ExperienceSection />
-      <ProjectsSection />
+      <div className="mx-auto max-w-6xl p-8">
+        <Navbar toggleModal={toggleModal} />
+        <HeroSection />
+        <EducationSection />
+        <ExperienceSection />
+        <ProjectsSection />
+      </div>
+        
     </>
   )
 }
