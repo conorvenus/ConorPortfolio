@@ -55,7 +55,7 @@ export default function Modal({ visible = false, toggleModal }) {
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}
                         transition={{duration: 0.5, ease: 'easeInOut'}}
-                        className="max-h-[600px] flex flex-col p-4 mt-16 card max-w-[600px] min-h-[300px] border border-text-secondary rounded-md bg-background bg-opacity-20 backdrop-blur-[25px]">
+                        className="max-h-[600px] flex flex-col p-4 card max-w-[600px] min-h-[300px] border border-text-secondary rounded-md bg-background bg-opacity-20 backdrop-blur-[25px]">
                         <main className="flex-1 flex flex-col gap-4 overflow-auto my-4 pr-4">
                             {messages.map((message, idx) =>
                                 <ChatMessage key={idx} content={message.content} isBot={message.isBot} />
