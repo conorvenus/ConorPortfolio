@@ -119,7 +119,8 @@ app.post("/api/sendMessage", async (req, res) => {
     
             stream.on('error', (err) => {
                 console.log(err);
-                res.send(err);
+                res.send("Something went wrong, try again!");
+                res.end();
             });
 })
 
